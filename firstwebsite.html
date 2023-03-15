@@ -2,15 +2,45 @@
 <html>
     <head>
         <title>First Website</title>
-        <link href="./css/external.css" />
+        <link rel="stylesheet" href="./external.css" />
         <meta name="description" content="This is my first website" />
         <meta name="keywords" content="first,website" />
-        <style></style>
+
+        <style>
+            
+            /* basic selectors */
+            
+            body {   /* tag selector */
+                background-color: beige
+            }
+
+            #para {  /*id selector(#) */
+                color: blueviolet;
+            }
+
+            .textbox {  /* class selector(.) */
+                border-color: red;
+                border-radius: 20px;
+            }
+
+            table,td,th,.class,#id {   /* grouping css selectors(,) */
+                border: 1px solid red;
+            }
+
+            form * {    /* universal selector(*) */
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+
+            input[required]  {/* attribute selector */
+                padding: 10px;
+            }
+
+        </style>
         <script></script>
     </head>
-    <body>
+    <body style="">
         xyz
-        <p>This is a HTML document</p>
+        <p id="para">This is a HTML document</p>
         a<p>HTML stands for Hypertext Markup LAnguage</p>
         sdfsd<br />dfsfsdf
         <hr />
@@ -83,5 +113,158 @@
             <dt>HTML</dt>
             <dd>HTMl is a formatting language. </dd>
         </dl>
+
+
+        <!-- table tags -->
+        <style>
+            table,td,th {
+                border: 1px solid red;
+            }
+            table {
+                left: 50%;
+                transform: translateX(50%);
+            }
+            
+        </style>
+        <table>
+            <caption>Employee Information</caption>
+            <colgroup>
+                <col span="2" style="background-color: blue" />
+                <col span="2" />
+                <col span="3" style="background-color: aqua;" />
+            </colgroup>
+            <tr>
+                <th colspan="2">Name</th>
+                <th rowspan="2">Email Address</th>
+                <th rowspan="2">Mob</th>
+                <th colspan="3">Address</th>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Line 1</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+            <tr>
+                <td>Akash</td>
+                <td>Soni</td>
+                <td>akash@gmail.com</td>
+                <td>+91 43242 42544</td>
+                <td>xyz</td>
+                <td>Bangalore</td>
+                <td>Karnataka</td>
+            </tr>
+            <tr>
+                <td>Soumya</td>
+                <td>Agarwal</td>
+                <td>soumya@gmail.com</td>
+                <td>+91 43242 42544</td>
+                <td>abc</td>
+                <td>Indore</td>
+                <td>Madhya Pradesh</td>
+            </tr>
+            <tr>
+                <td>Akash</td>
+                <td>Soni</td>
+                <td>akash@gmail.com</td>
+                <td>+91 43242 42544</td>
+                <td>xyz</td>
+                <td>Bangalore</td>
+                <td>Karnataka</td>
+            </tr>
+            <tr>
+                <td>Akash</td>
+                <td>Soni</td>
+                <td>akash@gmail.com</td>
+                <td>+91 43242 42544</td>
+                <td>xyz</td>
+                <td>Bangalore</td>
+                <td>Karnataka</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        
+
+        <!-- form tags -->
+        
+        <form action="welcome.php" method="get">
+            <label></label>
+            <input type="" />
+            <textarea></textarea>
+            <button type="button"></button>
+        </form>
+
+        <fieldset>
+            <legend>HTML Form tags</legend>
+            <form method="get" action="welcome.php">
+                <formgroup>
+                    <label>Username</label>
+                    <input type="text" name="uname" />
+                </formgroup>
+                <br><br>
+                <formgroup>
+                    <label>Password</label>
+                    <input type="password" name="passwd" />
+                </formgroup>
+                <br><br>
+                <formgroup>
+                    <input type="submit">
+                </formgroup>
+            </form>
+        </fieldset>
+
+        <style>
+            .textbox {
+                border: 2px solid black;
+            }
+            #name_txt {
+
+            }
+        </style>
+        <form>
+            <fieldset>
+                <legend>HTML Input Tags:</legend>
+                <!--text fields-->
+                <input class="textbox" type="text" name="name_inp" id="name_txt" class="textbox" value="Hello" />
+                <input class="textbox" type="url" placeholder="Enter a URL" required />
+                <input class="textbox" type="search" />
+                <input class="textbox" type="password" />
+                <input class="textbox" id="number-input" type="number" />
+                <input class="textbox" id="email-input" type="email" />
+                <textarea class="textbox" rows="10" cols="50"></textarea><br><br>
+    
+                <!-- date/time -->
+                <input id="date-picker" type="date" name="date">
+                <input type="datetime-local">
+                <input type="datetime" >
+                <input type="month">
+                <input type="week">
+                <input type="time">
+                <br><br>
+    
+                <!--check box-->
+                <input name="chk1" type="checkbox">
+                <input name="chk2" type="checkbox">
+    
+                <!-- radiobtn -->
+                <input name="gender" type="radio" value="male"><label>Male</label>
+                <input name="gender" type="radio" value="female"><label>Female</label>
+                <input name="gender" type="radio" value="others"><label>Others</label>
+    
+                <!-- selectors -->
+                <input type="color" name="color">
+                <input type="file">
+                <input type="image" src="list.png" alt="Submit" width="48" height="48">
+                <input type="range" name="range" min="0" max="10">
+    
+                <input type="button" value="CLICK" />
+                <input type="submit" value="SUBMIT"/>
+                <input type="reset" />
+    
+                <button type="submit">LOGIN</button>
+            </fieldset>
+            </form>
     </body>
 </html>
