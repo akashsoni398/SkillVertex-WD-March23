@@ -29,16 +29,67 @@
 
             form * {    /* universal selector(*) */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                
             }
 
             input[required]  {/* attribute selector */
                 padding: 10px;
             }
 
+            /* relational selectors */
+
+            .relselectors div {
+                border: 5px solid red;
+                padding: 15px;
+                margin:10px;
+                background-color: beige;
+                left:100px;
+            }
+            a
+
+            #john span {      /* descendent selectors */
+                background-color: aqua;
+            }
+
+            #steve>span {     /* child selectors */
+                background-color: blue;
+            }
+
+            #ella~span {      /* sibling selectors */
+                background-color: blue;
+            }
+            #ella+span {      /* sibling selectors */
+                background-color: blue;
+            }
+            
         </style>
         <script></script>
     </head>
-    <body style="">
+    <body>
+        
+        <section class="relselectors">
+            <div id="john">
+                <div id="steve">
+                    <div id="lee"></div>
+                    <div id="bob"></div>
+                    <div id="ella"></div>
+                    <div id="ella2"></div>
+                    <div id="ella3"></div>
+                    <div id="ella4"></div>
+                    <div id="ella5"></div>
+                </div>
+                <div id="rohan">
+                    <div id="sal"></div>
+                    <div id="emma">
+                        <div id="tom"></div>
+                        <div id="raj">
+                            <div id="bill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         xyz
         <p id="para">This is a HTML document</p>
         a<p>HTML stands for Hypertext Markup LAnguage</p>
