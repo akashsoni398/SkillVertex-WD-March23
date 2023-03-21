@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <style>
+        .bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
+            font-weight: bold !important;
+        }
+
         * {
             font-family: Georgia, 'Times New Roman', Times, serif;
             margin:0;
@@ -41,6 +46,7 @@
         }
 
         .dropdown-content {
+            z-index: 100000;
             position: absolute;
             display: none;
             right:0;
@@ -66,6 +72,92 @@
         .dropdown-content a:hover {
             background-color: rgb(166, 166, 166);
         }
+
+        #branding {
+            position: relative;
+            background-color: #fbc915;
+            z-index: 1;
+            height: 150px;
+        }
+        img[src="./assets/images/logo.gif"] {
+            height: 150px;
+        }
+        .left-align {
+            position: absolute;
+            top: 0;
+            left:0;
+        }
+        .right-align {
+            position: absolute;
+            top: 0;
+            right:0;
+        }
+
+        #branding h1 {
+            position: absolute;
+            top:10px;
+            left:160px;
+            font-family: fantasy;
+            font-size: 75px;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+
+        #branding p {
+            position: absolute;
+            top:90px;
+            left:160px;
+            font-size: 18.5px;
+            white-space: nowrap;
+        }
+
+        #branding form {
+            position: relative;
+            top: 60px;
+            right: 40px;
+        }
+
+        #branding form input {
+            position: absolute;
+            top:0;
+            right:0;
+            width: 300px;
+            height:30px;
+            padding:0 30px 0 10px;
+        }
+        #branding form button {
+            position: absolute;
+            top:0;
+            right:0;
+            width: 30px;
+            height:30px;
+            background-color: transparent;
+            border:none;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        nav ul  li {
+            list-style-type: none;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-family:Arial, Helvetica, sans-serif;
+            display: inline-block;
+            padding: 10px 30px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -81,16 +173,16 @@
         </div>
     </header>
 
-    <section>
+    <section id="branding">
         <div class="left-align">
-            <img src="./images/logo.gif" alt="Music Hub">
+            <img src="./assets/images/logo.gif" alt="Music Hub">
             <h1>MUSIC HUB</h1>
-            <p>-------------------------------------------------------<br>One stop shop for all your musical needs</p>
+            <p>------------------------------------------------<br>One stop shop for all your musical needs</p>
         </div>
         <div class="right-align">
             <form method="get" action="search.html">
-                <input type="search" name="search" />
-                <button type="submit">Search</button>
+                <input type="search" name="search" placeholder="search songs, artists or playlists"/>
+                <button type="submit"><i class="bi bi-search"></i></button>
             </form>
         </div>
     </section>
