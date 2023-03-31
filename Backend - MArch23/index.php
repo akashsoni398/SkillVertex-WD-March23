@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(isset($_GET['logout'])) {
+        session_destroy();
+        header("Location:index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,13 +174,29 @@
     <header>
         <a href="privacy.html">Privacy Policy</a>
         <a href="tnc.html">Terms & conditions</a>
+        
+        <?php if(!isset($_SESSION['userid'])) { ?>
+
         <div class="dropdown">
             <button class="dropbtn">LOGIN</button>
             <div class="dropdown-content">
-                <a href="login.html">Login into existing account</a>
-                <a href="register.html">Create a new account</a>
+                <a href="./authentication/login.php">Login into existing account</a>
+                <a href="./authentication/register.php">Create a new account</a>
             </div>
         </div>
+
+        <?php } else { ?>
+
+        <div class="dropdown">
+            <button class="dropbtn"><?php echo $_SESSION['username'] ?></button>
+            <div class="dropdown-content">
+                <a href="./authentication/login.php">Change password</a>
+                <a href="./index.php?logout=true">Logout</a>
+            </div>
+        </div>
+
+        <?php } ?>
+
     </header>
 
     <section id="branding">
