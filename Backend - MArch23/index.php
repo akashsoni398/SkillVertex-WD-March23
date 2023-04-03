@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include "./dbconfig.php";
 
     if(isset($_GET['logout'])) {
         session_destroy();
@@ -14,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
     <style>
         .bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
@@ -190,7 +192,7 @@
         <div class="dropdown">
             <button class="dropbtn"><?php echo $_SESSION['username'] ?></button>
             <div class="dropdown-content">
-                <a href="./authentication/login.php">Change password</a>
+                <a href="./authentication/changepwd.php">Change password</a>
                 <a href="./index.php?logout=true">Logout</a>
             </div>
         </div>
@@ -224,8 +226,37 @@
         </ul>
     </nav>
 
-    <main></main>
+    <main class='m-5'>
+        <h1 class='text-center'>Out Top Songs</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4 m-5">
+            
+        <?php 
+            $sql_query = "SELECT id, name, dor, doa, album, views, singer, composer, songwriter, label, starring, image, link from music ORDER BY name ASC;";
+            $result = mysqli_query($conn,$sql_query);
+            while($row = mysqli_fetch_array($result)) {
+        ?>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <img src="./assets/musicimg/<?php echo $row['image']?>" class="card-img-top" alt="...">
+                        <audio controls>
+                            <source src="./assets/music/<?php echo $row['link']?>" />
+                        </audio>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['name'] ?></h5>
+                        <p class="card-text"><?php echo "Album:",$row['album'],"<br>Singer:",$row['singer'],"<br>Composer:",$row['composer'],"<br>Songwriter:",$row['songwriter']?></p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Views: <?php echo $row['views'] ?></small>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        </div>
+    </main>
 
     <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

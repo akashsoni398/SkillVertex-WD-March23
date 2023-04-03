@@ -10,20 +10,25 @@
         $pwd = mysqli_real_escape_string($conn,$_POST['pwd']);
         
         if($email!="" && $pwd!="") {
-            $sql_query = "SELECT count(*) AS usercount FROM users WHERE email='$email' AND password='$pwd';";
+            $sql_query = "SELECT count(*) AS usercount FROM users WHERE email='$email';";
             $result = mysqli_query($conn,$sql_query);
             $row = mysqli_fetch_array($result);
             $count = $row['usercount'];
 
             if($count>0) {
-                $sql_query = "SELECT name as username, id as userid FROM users WHERE email='$email';";
+
+                $sql_query = "SELECT name as username, id as userid,password as pwd FROM users WHERE email='$email';";
                 $result = mysqli_query($conn,$sql_query);
                 $row = mysqli_fetch_array($result);
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['userid'] = $row['userid'];
-                $_SESSION['useremail'] = $email;
-
-                header("Location:./../index.php");
+                if(password_verify($pwd,$row['pwd'])) {
+                  $_SESSION['username'] = $row['username'];
+                  $_SESSION['userid'] = $row['userid'];
+                  $_SESSION['useremail'] = $email;
+                  header("Location:./../index.php");
+                } 
+                else {
+                  $errmsg = "The email address or password you entered isn't correct. Find your account and log in.";
+                }
             }
             else {
                 $errmsg = "The email address or password you entered isn't correct. Find your account and log in.";
